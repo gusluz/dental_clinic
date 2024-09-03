@@ -1,10 +1,6 @@
-
-Babel==2.15.0
-
-django-phonenumber-field==8.0.0
-django-picklefield==3.2
-django-q2==1.6.2
-
-phonenumbers==8.13.42
-pillow==10.4.0
-
+asgiref==3.8.1
+Django==4.2.15
+django-decouple==2.1
+django-test-without-migrations==0.6
+sqlparse==0.5.1
+typing_extensions==4.12.2
