@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'landpage',
     'patients',
     'doctors',
+    'scheduling',
 
 ]
 
