@@ -1,12 +1,12 @@
 from django.contrib import admin
-from scheduling.models import Scheduling
+from scheduling.models import Event
 
 
-class SchedulingModelAdmin(admin.ModelAdmin):
-    list_display = ('scheduling_cpf', 'start', 'doctor_id', 'patient_id')
+class EventModelAdmin(admin.ModelAdmin):
+    list_display = ('scheduling_cpf', 'patient_name', 'start_time', 'end_time', 'patient_id')
 
 
-admin.site.register(Scheduling, SchedulingModelAdmin)
+admin.site.register(Event, EventModelAdmin)
 
 
 # Register your models here.
