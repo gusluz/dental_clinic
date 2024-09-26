@@ -27,7 +27,15 @@ def validate_cpf(value):
 
     if cpf in INVALIDS_CPFS or (not cpf[-2:] == "%s%s" % (first_digit, second_digit)):
         raise ValidationError('Número de CPF inválido', 'invalid')
-    
+    # Formata o CPF
+    return f"{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}"
+
+
+def format_cpf(cpf):
+    cpf = re.sub(r'\D', '', cpf)
+    cpf = cpf.zfill(11)
+    return '{}.{}.{}-{}'.format(cpf[:3], cpf[3:6], cpf[6:9], cpf[9:])
+
 
 def validate_phone(value):
     phone = re.sub(r"[^\d]", "", value)

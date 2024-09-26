@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from patients.models import Patients
 from doctors.models import Doctors
-from patients.validators import validate_cpf
+from patients.validators import format_cpf, validate_cpf
 
 
 class EventManager(models.Manager):
@@ -51,6 +51,11 @@ class Event(EventAbstract):
 
     def __str__(self):
         return self.scheduling_cpf
+    
+
+    def save(self, *args, **kwargs):
+        self.scheduling_cpf= format_cpf(self.scheduling_cpf)
+        super(Event, self).save(*args, **kwargs)
     
 
     def get_absolute_url(self):

@@ -1,5 +1,5 @@
 from django.db import models
-from patients.validators import validate_cpf, validate_phone
+from patients.validators import validate_cpf, validate_phone, format_cpf
 from patients.estados_choices import ESTADOS_CHOICES
 
 class Patients(models.Model):
@@ -38,6 +38,11 @@ class Patients(models.Model):
 
     def __str__(self) -> str:
         return self.name
+    
+
+    def save(self, *args, **kwargs):
+        self.cpf = format_cpf(self.cpf)
+        super(Patients, self).save(*args, **kwargs)
 
 
 class Contact(models.Model):
