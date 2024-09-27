@@ -1,3 +1,4 @@
+
 from pathlib import Path
 from decouple import config
 
@@ -49,7 +50,8 @@ ROOT_URLCONF = 'dental_clinic.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        # 'DIRS': [],
+        'DIRS': [Path(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
