@@ -8,13 +8,13 @@ class EventForm(ModelForm):
         fields = ["scheduling_cpf", "patient_name", "description", "start_time", "end_time"]
         # datetime-local is a HTML5 input type
         widgets = {
-            "scheduling_cpf": forms.CharField(
+            "scheduling_cpf": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "CPF do paciente"}
             ),
-            "patient_name": forms.CharField(
+            "patient_name": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Nome do paciente"}
             ),
-            "description": forms.CharField(
+            "description": forms.TextInput(
                 attrs={"class": "form-control", "placeholder": "Descrição da consulta",}
             ),
             "start_time": DateInput(
