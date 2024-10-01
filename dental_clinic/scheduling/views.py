@@ -64,9 +64,16 @@ def update_day(request, event_id):
         event.start_time = start_time
         event.end_time = end_time
         event.save()
-
         return JsonResponse({'message': 'Event updated successfully'})
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=400)
+    
+
+class RunningEventsListView(ListView):
+    template_name = "scheduling/calendar.html"
+    model = Event
+
+    def get_queryset(self):
+        return Event.objects.get_running_events()
 
 
