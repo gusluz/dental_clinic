@@ -6,6 +6,115 @@
 
 {% block content %}
 
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            
 
+            <div class="container mt-5">
+                <a href="{% url 'patients:edit' patient.pk %}" class="btn btn-warning btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-pencil"></i>
+                    </span>
+                    <span class="text">Editar Paciente</span>
+                </a>
+
+                <h3>Dados Básicos:</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ patient.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>CPF</th>
+                        <td>{{ patient.cpf }}</td>
+                    </tr>
+                    <tr>
+                        <th>RG Nº</th>
+                        <td>{{ patient.rg_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>Orgão Expedidor</th>
+                        <td>{{ patient.organization }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nascido em</th>
+                        <td>{{ patient.date_birth }}</td>
+                    </tr>
+                    <tr>
+                        <th>Sexo</th>
+                        <td>{{ patient.sex }}</td>
+                    </tr>
+                    <tr>
+                        <th>Naturalidade</th>
+                        <td>{{ patient.place_birth }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nacionalidade</th>
+                        <td>{{ patient.country_birth }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado Civil</th>
+                        <td>{{ patient.marital_status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Profissão</th>
+                        <td>{{ patient.current_job }}</td>
+                    </tr>
+                    <tr>
+                        <th>Plano de Saúde</th>
+                        <td>{{ patient.health_plan }}</td>
+                    </tr>
+                    <tr>
+                        <th>Observações</th>
+                        <td>{{ patient.observation }}</td>
+                    </tr>
+                </table>
+                <h3>Contato:</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Telefone 1</th>
+                        <td>{{ patient.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefone 2</th>
+                        <td>{{ patient.phone2 }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ patient.email }}</td>
+                    </tr>
+                </table>
+                <h3>Endereço:</h3>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Endereço</th>
+                        <td>{{ patient.address }}</td>
+                    </tr>
+                    <tr>
+                        <th>Número</th>
+                        <td>{{ patient.address_number }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bairro</th>
+                        <td>{{ patient.address_district }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cidade</th>
+                        <td>{{ patient.address_city }}</td>
+                    </tr>
+                    <tr>
+                        <th>Estado</th>
+                        <td>{{ patient.address_state }}</td>
+                    </tr>
+                    <tr>
+                        <th>Complemento</th>
+                        <td>{{ patient.address_complement }}</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
