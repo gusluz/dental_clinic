@@ -15,7 +15,7 @@ class Patients(models.Model):
         ('DV', 'DIVORCIADO'),
         ('VV', 'VIUVO'),
     )
-
+    #---#
     name = models.CharField('NOME', max_length=255)
     cpf = models.CharField('CPF', max_length=14, validators=[validate_cpf])
     rg_number = models.CharField('RG Nº', max_length=20, blank=True)
@@ -29,7 +29,17 @@ class Patients(models.Model):
     health_plan = models.CharField('PLANO DE SAÚDE', max_length=255, blank=True)
     observation = models.TextField('OBSERVAÇÕES', blank=True)
     created_at = models.DateTimeField('CRIADO EM', auto_now_add=True)
-
+    #---#
+    phone = models.CharField('TELEFONE 1', max_length=20, validators=[validate_phone])
+    phone2 = models.CharField('TELEFONE 2', max_length=20, validators=[validate_phone], blank=True)
+    email = models.EmailField('EMAIL', blank=True)
+    #---#
+    address = models.CharField('ENDEREÇO', max_length=255)
+    address_number = models.CharField('NÚMERO', max_length=10)
+    address_district = models.CharField('BAIRRO', max_length=255)
+    address_city = models.CharField('CIDADE', max_length=255)
+    address_state = models.CharField('ESTADO', max_length=2, choices=ESTADOS_CHOICES)
+    address_complement = models.CharField('COMPLEMENTO', max_length=255, blank=True)
 
     class Meta:
         verbose_name = 'Paciente'
@@ -43,40 +53,3 @@ class Patients(models.Model):
     def save(self, *args, **kwargs):
         self.cpf = format_cpf(self.cpf)
         super(Patients, self).save(*args, **kwargs)
-
-
-class Contact(models.Model):
-    patient = models.ForeignKey('Patients', on_delete=models.CASCADE, verbose_name='Paciente')
-    phone = models.CharField('TELEFONE 1', max_length=20, validators=[validate_phone])
-    phone2 = models.CharField('TELEFONE 2', max_length=20, validators=[validate_phone], blank=True)
-    email = models.EmailField('EMAIL', blank=True)
-
-
-    class Meta:
-        verbose_name = 'Contato'
-        verbose_name_plural = 'Contatos'
-
-
-    def __str__(self) -> str:
-        return self.phone
-
-
-class Address(models.Model):
-    patient = models.ForeignKey('Patients', on_delete=models.CASCADE, verbose_name='Paciente')
-    address = models.CharField('ENDEREÇO', max_length=255)
-    address_number = models.CharField('NÚMERO', max_length=10)
-    address_district = models.CharField('BAIRRO', max_length=255)
-    address_city = models.CharField('CIDADE', max_length=255)
-    address_state = models.CharField('ESTADO', max_length=2, choices=ESTADOS_CHOICES)
-    address_complement = models.CharField('COMPLEMENTO', max_length=255, blank=True)
-
-
-    class Meta:
-        verbose_name = 'Endereço'
-        verbose_name_plural = 'Endereços'
-
-
-    def __str__(self) -> str:
-        return self.address
-
-

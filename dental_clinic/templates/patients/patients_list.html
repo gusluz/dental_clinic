@@ -5,7 +5,44 @@
 {% block content_name %}Pacientes{% endblock content_name %}
 
 {% block content %}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="my-4">
+                <a href="{% url "patients:add" %}" class="btn btn-success btn-icon-split">
+                    <span class="icon text-white-50">
+                        <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Novo Paciente</span>
+                </a>
+            </div>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>NOME</th>
+                        <th>CPF</th>
+                        <th>PLANO DE SAÚDE</th>
+                        <th>CRIADO EM</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for patient in patients %} 
+                        <tr>
+                            <td>{{ patient.name }}</td>
+                            <td>{{ patient.cpf }}</td>
+                            <td>{{ patient.health_plan }}</td>
+                            <td>{{ patient.created_at }}</td>
+                            <td><a href="{% url "patients:info" patient.pk %}" class="btn btn-info btn-circle"><i class="fas fa-info-circle"></i></a></td>
+                            <td><a href="#" class="btn btn-danger btn-circle"><i class="fas fa-trash"></i></a></td>
 
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 
 {% endblock content %}

@@ -2,10 +2,140 @@
 
 {% block title %}Pacientes{% endblock title %}
 
+{% block extra_statics %}
+{% comment %} <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> {% endcomment %}
+{% endblock extra_statics %}
+
 {% block content_name %}Cadastro de Paciente{% endblock content_name %}
 
 {% block content %}
 
-
+<div class="row">
+    <div class="col-lg-12">
+        <div class="container mt-5">
+            <h2>Formulário de Paciente</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+                
+                <!-- Dados Básicos -->
+                <h3>Dados Básicos</h3>
+                <div class="form-group">
+                    <label for="{{ form.name.id_for_label }}"><strong>{{ form.name.label }}</strong></label>
+                    {{ form.name.errors }}
+                    {{ form.name }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.cpf.id_for_label }}"><strong>{{ form.cpf.label }}</strong></label>
+                    {{ form.cpf.errors }}
+                    {{ form.cpf }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.rg_number.id_for_label }}">{{ form.rg_number.label }}</label>
+                    {{ form.rg_number.errors }}
+                    {{ form.rg_number }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.organization.id_for_label }}">{{ form.organization.label }}</label>
+                    {{ form.organization.errors }}
+                    {{ form.organization }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.date_birth.id_for_label }}"><strong>{{ form.date_birth.label }}</strong></label>
+                    {{ form.date_birth.errors }}
+                    {{ form.date_birth }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.sex.id_for_label }}"><strong>{{ form.sex.label }}</strong></label>
+                    {{ form.sex.errors }}
+                    {{ form.sex }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.place_birth.id_for_label }}"><strong>{{ form.place_birth.label }}</strong></label>
+                    {{ form.place_birth.errors }}
+                    {{ form.place_birth }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.country_birth.id_for_label }}"><strong>{{ form.country_birth.label }}</strong></label>
+                    {{ form.country_birth.errors }}
+                    {{ form.country_birth }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.marital_status.id_for_label }}"><strong>{{ form.marital_status.label }}</strong></label>
+                    {{ form.marital_status.errors }}
+                    {{ form.marital_status }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.current_job.id_for_label }}"><strong>{{ form.current_job.label }}</strong></label>
+                    {{ form.current_job.errors }}
+                    {{ form.current_job }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.health_plan.id_for_label }}">{{ form.health_plan.label }}</label>
+                    {{ form.health_plan.errors }}
+                    {{ form.health_plan }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.observation.id_for_label }}">{{ form.observation.label }}</label>
+                    {{ form.observation.errors }}
+                    {{ form.observation }}
+                </div>
+                
+                <!-- Contato -->
+                <h3>Contato</h3>
+                <div class="form-group">
+                    <label for="{{ form.phone.id_for_label }}"><strong>{{ form.phone.label }}</strong></label>
+                    {{ form.phone.errors }}
+                    {{ form.phone }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.phone2.id_for_label }}">{{ form.phone2.label }}</label>
+                    {{ form.phone2.errors }}
+                    {{ form.phone2 }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+                    {{ form.email.errors }}
+                    {{ form.email }}
+                </div>
+                
+                <!-- Endereço -->
+                <h3>Endereço</h3>
+                <div class="form-group">
+                    <label for="{{ form.address.id_for_label }}"><strong>{{ form.address.label }}</strong></label>
+                    {{ form.address.errors }}
+                    {{ form.address }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address_number.id_for_label }}"><strong>{{ form.address_number.label }}</strong></label>
+                    {{ form.address_number.errors }}
+                    {{ form.address_number }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address_district.id_for_label }}"><strong>{{ form.address_district.label }}</strong></label>
+                    {{ form.address_district.errors }}
+                    {{ form.address_district }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address_city.id_for_label }}"><strong>{{ form.address_city.label }}</strong></label>
+                    {{ form.address_city.errors }}
+                    {{ form.address_city }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address_state.id_for_label }}"><strong>{{ form.address_state.label }}</strong></label>
+                    {{ form.address_state.errors }}
+                    {{ form.address_state }}
+                </div>
+                <div class="form-group">
+                    <label for="{{ form.address_complement.id_for_label }}">{{ form.address_complement.label }}</label>
+                    {{ form.address_complement.errors }}
+                    {{ form.address_complement }}
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
+        </div>
+    </div>
+</div>
 
 {% endblock content %}
