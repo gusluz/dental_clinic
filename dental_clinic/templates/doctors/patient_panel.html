@@ -1,0 +1,190 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Painel do Paciente{% endblock title %}
+
+{% block extra_statics %}
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+{% endblock extra_statics %}
+
+{% block content_name %}Painel do Paciente{% endblock content_name %}
+
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <canvas id="odontogram" style="margin-top: 15px;border: 1px solid red; align-items: center;">
+
+        </canvas>
+        
+        <br><br>
+        
+        <button type="button" id="ODONTOGRAM_MODE_AMF" >AMF</button>
+        <button type="button" id="ODONTOGRAM_MODE_COF" style="background-color: green;">COF</button>
+        <button type="button" id="ODONTOGRAM_MODE_FIS" style="background-color: pink;">FIS</button>
+        <button type="button" id="ODONTOGRAM_MODE_SEMICIRCLE" style="background-color: greenyellow;">SemiCircle</button>
+        
+        <button type="button" id="ODONTOGRAM_MODE_NVT">NVT</button>
+        <button type="button" id="ODONTOGRAM_MODE_RCT">RCT</button>
+        <button type="button" id="ODONTOGRAM_MODE_NON">NON</button>
+        <button type="button" id="ODONTOGRAM_MODE_UNE">UNE</button>
+        <button type="button" id="ODONTOGRAM_MODE_PRE">PRE</button>
+        <button type="button" id="ODONTOGRAM_MODE_ANO">ANO</button>
+        <button type="button" id="ODONTOGRAM_MODE_CARIES">CARIES</button>
+        <button type="button" id="ODONTOGRAM_MODE_CFR">CFR</button>
+        <button type="button" id="ODONTOGRAM_MODE_FMC">FMC</button>
+        <button type="button" id="ODONTOGRAM_MODE_POC">POC</button>
+        <button type="button" id="ODONTOGRAM_MODE_RRX">RRX</button>
+        <button type="button" id="ODONTOGRAM_MODE_MIS">MIS</button>
+        <button type="button" id="ODONTOGRAM_MODE_IPX">IPX</button>
+        <button type="button" id="ODONTOGRAM_MODE_FRM_ACR">FRM_ACR</button>
+        <button type="button" id="ODONTOGRAM_MODE_BRIDGE">BRIDGE</button>
+        <br><br>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_TOP_LEFT">ARROW_TOP_LEFT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_TOP_RIGHT">ARROW_TOP_RIGHT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_TOP_TURN_LEFT">ARROW_TOP_TURN_LEFT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_TOP_TURN_RIGHT">ARROW_TOP_TURN_RIGHT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_BOTTOM_LEFT">ARROW_BOTTOM_LEFT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_BOTTOM_RIGHT">ARROW_BOTTOM_RIGHT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_LEFT">ARROW_BOTTOM_TURN_LEFT</button>
+        <button type="button" id="ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_RIGHT">ARROW_BOTTOM_TURN_RIGHT</button>
+        
+        <br><br>
+        <button type="button" id="ODONTOGRAM_MODE_HAPUS">HAPUS</button>
+        <button type="button" id="ODONTOGRAM_MODE_DEFAULT">DEFAULT</button>
+        <button type="button" id="download">DOWNLOAD</button>
+    </div>
+</div>
+
+
+
+
+{% endblock content %}
+
+
+{% block extra_scripts %}
+
+<script src="{% static 'js/odontogram.js' %}"></script>
+
+
+<script type="text/javascript">
+    var odontogram = $("#odontogram").odontogram('init', {
+        width: "900px",
+        height: "340px",
+        
+    });
+
+    // $("#odontogram").data('odontogram').setGeometryByPos([
+    //     { code: 'AMF', pos: '18-R' },
+    //     { code: 'AMF', pos: '18-L' },
+    //     { code: 'CARIES', pos: '83-M' },
+    //     { code: 'CARIES', pos: '83-T' },
+    //     { code: 'POC', pos: '84' },
+    // ]);
+
+    $('#odontogram').on('change', function (_, geometry) {
+        console.log(geometry)
+    })
+
+
+    $("#ODONTOGRAM_MODE_SEMICIRCLE").click(function () { 
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_SEMICIRCLE); 
+    });
+
+
+    $("#ODONTOGRAM_MODE_HAPUS").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_HAPUS);
+    });
+    $("#ODONTOGRAM_MODE_DEFAULT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_DEFAULT);
+    });
+    $("#ODONTOGRAM_MODE_AMF").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_AMF);
+    });
+    $("#ODONTOGRAM_MODE_COF").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_COF);
+    });
+    $("#ODONTOGRAM_MODE_FIS").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_FIS);
+    });
+    $("#ODONTOGRAM_MODE_NVT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_NVT);
+    });
+    $("#ODONTOGRAM_MODE_RCT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_RCT);
+    });
+    $("#ODONTOGRAM_MODE_NON").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_NON);
+    });
+    $("#ODONTOGRAM_MODE_UNE").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_UNE);
+    });
+    $("#ODONTOGRAM_MODE_PRE").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_PRE);
+    });
+    $("#ODONTOGRAM_MODE_ANO").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ANO);
+    });
+    $("#ODONTOGRAM_MODE_CARIES").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_CARIES);
+    });
+    $("#ODONTOGRAM_MODE_CFR").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_CFR);
+    });
+    $("#ODONTOGRAM_MODE_FMC").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_FMC);
+    });
+    $("#ODONTOGRAM_MODE_POC").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_POC);
+    });
+    $("#ODONTOGRAM_MODE_RRX").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_RRX);
+    });
+    $("#ODONTOGRAM_MODE_MIS").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_MIS);
+    });
+    $("#ODONTOGRAM_MODE_IPX").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_IPX);
+    });
+    $("#ODONTOGRAM_MODE_FRM_ACR").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_FRM_ACR);
+    });
+    $("#ODONTOGRAM_MODE_BRIDGE").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_BRIDGE);
+    });
+    $("#ODONTOGRAM_MODE_ARROW_TOP_LEFT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_TOP_LEFT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_TOP_RIGHT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_TOP_RIGHT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_TOP_TURN_LEFT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_TOP_TURN_LEFT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_TOP_TURN_RIGHT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_TOP_TURN_RIGHT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_BOTTOM_LEFT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_BOTTOM_LEFT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_BOTTOM_RIGHT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_BOTTOM_RIGHT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_LEFT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_LEFT);
+    })
+    $("#ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_RIGHT").click(function () {
+        $("#odontogram").odontogram('setMode', ODONTOGRAM_MODE_ARROW_BOTTOM_TURN_RIGHT);
+    })
+
+    $("#download").click(function () {
+        window.open($("#odontogram").odontogram('getDataURL'));
+    })
+</script>
+
+{% endblock extra_scripts %}
